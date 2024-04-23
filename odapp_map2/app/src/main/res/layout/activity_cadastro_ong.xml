@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Campo de entrada para o nome -->
+            <TextView
+                android:id="@+id/textViewNome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insira o nome"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- Campo de entrada para o link -->
+            <TextView
+                android:id="@+id/textViewLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Link"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insira o link"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- Campo de entrada para a latitude -->
+            <TextView
+                android:id="@+id/textViewLatitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latitude"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextLatitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insira a latitude"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- Campo de entrada para a latitude -->
+            <TextView
+                android:id="@+id/textViewLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Longitude"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/editTextLongitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Insira a longitude"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+
+            <!-- Campo de escolha para os ODS -->
+            <TextView
+                android:id="@+id/textViewODS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Objetivos de Desenvolvimento Sustentável (ODS)"
+                android:layout_marginTop="16dp"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroupODS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 1: Erradicação da Pobreza"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 2: Fome Zero e Agricultura Sustentável"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 3: Saúde e Bem-Estar"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 4: Educação de Qualidade"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 5: Igualdade de Gênero"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 6: Água Potável e Saneamento"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 7: Energia Limpa e Acessível"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 8: Trabalho Decente e Crescimento Econômico"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 9: Indústria, Inovação e Infraestrutura"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 10: Redução das Desigualdades"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 11: Cidades e Comunidades Sustentáveis"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 12: Consumo e Produção Responsáveis"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 13: Ação Contra a Mudança Global do Clima"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 14: Vida na Água"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 15: Vida Terrestre"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 16: Paz, Justiça e Instituições Eficazes"/>
+
+                <RadioButton
+                    android:id="@+id/radioButtonODS17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ODS 17: Parcerias e Meios de Implementação"/>
+
+            </RadioGroup>
+
+            <!-- Botão para salvar/cadastrar -->
+            <Button
+                android:id="@+id/buttonSalvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salvar"
+                android:layout_marginTop="24dp"
+                android:layout_gravity="center_horizontal"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

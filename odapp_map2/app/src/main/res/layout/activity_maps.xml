@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MapsActivity">
+
+<!-- Mapa -->
+<fragment
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+<!-- Spinner para filtrar os ODS -->
+<Spinner
+    android:id="@+id/spinnerODSFilter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:entries="@array/ods_array"
+    android:layout_alignParentTop="true"
+    android:layout_margin="16dp" />
+
+<!-- Botão para escolher o filtro -->
+<Button
+    android:id="@+id/buttonChooseFilter"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Escolher Filtro"
+    android:layout_below="@id/spinnerODSFilter"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="16dp" />
+
+<!-- Botão para cadastrar a ONG -->
+<Button
+    android:id="@+id/buttonCadastroONG"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Cadastre sua ONG"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginBottom="16dp" />
+
+</RelativeLayout>
+
