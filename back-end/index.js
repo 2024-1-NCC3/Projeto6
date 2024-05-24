@@ -40,7 +40,7 @@ db.serialize(() => {
       console.error("Erro ao verificar colunas da tabela:", err);
     } else {
       const columnExists = columns.some(
-        (column) => column.name === "imagemUri",
+        (column) => column.name === "imagemUri"
       );
       if (!columnExists) {
         db.run(`ALTER TABLE cadastro_ong ADD COLUMN imagemUri TEXT`, (err) => {
@@ -60,6 +60,20 @@ db.serialize(() => {
 app.get("/", function (req, res) {
   res.send("Tudo certo por aqui!");
 });
+
+// Endpoint para contar o total de ONGs
+app.get("/ongs/count", function (req, res) {
+  const qCount = `SELECT COUNT(*) AS count FROM cadastro_ong`;
+  db.get(qCount, [], (err, row) => {
+    if (err) {
+      res.status(500).send("Erro interno do servidor: " + err);
+    } else {
+      res.json({ total: row.count });
+    }
+  });
+});
+
+
 
 app.post("/register", async function (req, res) {
   var nome = req.body.nome;
@@ -203,6 +217,8 @@ app.delete("/deleteOng", function (req, res) {
   });
 });
 
-app.listen(port, function () {
+var server = app.listen(port, function () {
   console.log("Servidor rodando na porta " + port);
 });
+
+server.timeout = 120000; // Define timeout de 120 segundos
