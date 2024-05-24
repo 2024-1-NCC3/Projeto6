@@ -20,18 +20,6 @@
 <p class="center"><strong>Nós somos a ODAPP!</strong></p>
 
 <br><br>
-  
-|-->app<br>
-  &emsp;|-->src<br>
-  &emsp; &emsp;|-->main<br>
-  &emsp; &emsp;&emsp;|-->java/com/example/odapp<br>
-  &emsp;&emsp;&emsp;&emsp;|-->Adapter<br>
-  &emsp;&emsp;&emsp;&emsp;|-->Class<br>
-  &emsp;&emsp;&emsp;&emsp;|-->activities<br>
-  &emsp;&emsp;&emsp;&emsp;|-->fragments<br>
-  &emsp; &emsp;&emsp;|-->res<br>
-|Odapp.apk<br>
-|README.md<br>
 
 ## 🛠 Instalação
 
@@ -40,15 +28,14 @@
 Busque pelo apk "odapp.apk" e instale no seu dispositivo Android.
 
 ## 🗃 Histórico de lançamentos
-*0.4.0 - 15/04/2024
-    *ALTERAÇÃO: Telas finalizadas
-*0.3.0 - 30/04/2024
-  *ALTERAÇÃO: Integração com o banco de dados
-*0.2.0 - 17/04/2024
-    *ALTERAÇÃO: Reestruturação do repositório
-*0.1.0 - 20/0232024
+* 0.4.0 - 15/04/2024
+    * ALTERAÇÃO: Telas finalizadas
+* 0.3.0 - 30/04/2024
+  * ALTERAÇÃO: Integração com o banco de dados
+* 0.2.0 - 17/04/2024
+    * ALTERAÇÃO: Reestruturação do repositório
+* 0.1.0 - 20/0232024
     *ALTERAÇÃO: Inclusão das primeiras telas do aplicativo
-*0.0.1 - 04/02/2024
+* 0.0.1 - 04/02/2024
     *Lançamento inicial do repositório
 
- ## 📋 Licença/License
