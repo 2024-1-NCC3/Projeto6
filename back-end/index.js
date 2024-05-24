@@ -61,28 +61,6 @@ app.get("/", function (req, res) {
   res.send("Tudo certo por aqui!");
 });
 
-app.get("/tudo", function (req, res) {
-  const query = `SELECT * FROM cadastro`;
-  db.all(query, [], (err, rows) => {
-    if (err) {
-      res.status(500).send("Erro interno do servidor: " + err);
-    } else {
-      res.send(rows);
-    }
-  });
-});
-
-app.get("/ongs", function (req, res) {
-  const query = `SELECT * FROM cadastro_ong`;
-  db.all(query, [], (err, rows) => {
-    if (err) {
-      res.status(500).send("Erro interno do servidor: " + err);
-    } else {
-      res.send(rows);
-    }
-  });
-});
-
 app.post("/register", async function (req, res) {
   var nome = req.body.nome;
   var email = req.body.email;
