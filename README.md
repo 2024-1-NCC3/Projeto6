@@ -19,6 +19,23 @@
 
 <p class="center"><strong>Nós somos a ODAPP!</strong></p>
 
+## 🛠 Estrutura de pastas
+
+-Raiz<br>
+|<br>
+|-->Documentos<br>
+  &emsp;|Breve_Descrição.docx<br>
+  &emsp;|Descrição.docx<br>
+  
+|-->app<br>
+  &emsp;|-->src<br>
+  &emsp; &emsp;|-->main<br>
+  &emsp; &emsp;&emsp;|-->java/com/example/odmap
+  &emsp; &emsp;&emsp;|-->res<br>
+  &emsp; &emsp;&emsp;|-->test/java/com/gustavo/odmap
+|Odapp.apk<br>
+|README.md<br>
+
 
 ## 🛠 Instalação
 
