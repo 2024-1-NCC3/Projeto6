@@ -8,7 +8,7 @@ public class OngRequest {
     public String cnpj;
     public String descricao;
     public String telefone;
-    public int ods;
+    public int ods;  // ods deve ser int, não String
     public String imagemUri;
 
     public OngRequest(String nome, String link, double latitude, double longitude, String cnpj, String descricao, String telefone, int ods, String imagemUri) {

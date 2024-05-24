@@ -1,5 +1,7 @@
 package com.gustavo.odmap;
 
+import java.util.List;
+
 public class Ong {
     private final double latitude;
     private final double longitude;
@@ -7,10 +9,10 @@ public class Ong {
     private final String link;
     private final String telefone;
     private final String descricao;
-    private final String ods;
+    private final List<Integer> ods; // Campo para armazenar a lista de ODS
     private final String imagemUri; // Campo para armazenar a URI da imagem
 
-    public Ong(double latitude, double longitude, String nome, String link, String telefone, String descricao, String ods, String imagemUri) {
+    public Ong(double latitude, double longitude, String nome, String link, String telefone, String descricao, List<Integer> ods, String imagemUri) {
         if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
             throw new IllegalArgumentException("Coordenadas de latitude e longitude inválidas");
         }
@@ -49,7 +51,7 @@ public class Ong {
         return descricao;
     }
 
-    public String getOds() {
+    public List<Integer> getOds() {
         return ods;
     }
 
@@ -66,7 +68,7 @@ public class Ong {
                 ", link='" + link + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", ods='" + ods + '\'' +
+                ", ods=" + ods +
                 ", imagemUri='" + (imagemUri != null ? imagemUri : "N/A") + '\'' +
                 '}';
     }

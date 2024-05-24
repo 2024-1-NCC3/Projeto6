@@ -114,7 +114,7 @@ public class CadastroOngActivity extends AppCompatActivity {
         String telefone = editTextTelefone.getText().toString();
 
         if (nome.isEmpty() || link.isEmpty() || cnpj.isEmpty() || latitudeStr.isEmpty() || longitudeStr.isEmpty() || descricao.isEmpty() || telefone.isEmpty()) {
-            Toast.makeText(this, "Todos os campos são obrigatórios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Todos os campos são obrigatórios, exceto a imagem", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -136,12 +136,14 @@ public class CadastroOngActivity extends AppCompatActivity {
             return;
         }
 
-        int selectedId = radioGroupODS.getCheckedRadioButtonId();
-        int ods = 0;
+        final int selectedId = radioGroupODS.getCheckedRadioButtonId();
+        final int finalOds;
         if (selectedId != -1) {
             View radioButton = radioGroupODS.findViewById(selectedId);
             int index = radioGroupODS.indexOfChild(radioButton);
-            ods = index + 1;
+            finalOds = index + 1;
+        } else {
+            finalOds = 0; // ou qualquer valor padrão que você considere apropriado
         }
 
         if (descricao.length() > 240) {
@@ -149,7 +151,7 @@ public class CadastroOngActivity extends AppCompatActivity {
             return;
         }
 
-        OngRequest ongRequest = new OngRequest(nome, link, latitude, longitude, cnpj, descricao, telefone, ods, imagemUri);
+        OngRequest ongRequest = new OngRequest(nome, link, latitude, longitude, cnpj, descricao, telefone, finalOds, imagemUri);
         ApiService apiService = RetrofitClient.getApiService();
         Call<ResponseBody> call = apiService.cadastrarOng(ongRequest);
         call.enqueue(new Callback<ResponseBody>() {
@@ -157,6 +159,18 @@ public class CadastroOngActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CadastroOngActivity.this, "ONG cadastrada com sucesso!", Toast.LENGTH_SHORT).show();
+
+                    // Envia os dados de volta para a atividade de mapa
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("nome", nome);
+                    resultIntent.putExtra("link", link);
+                    resultIntent.putExtra("latitude", String.valueOf(latitude));
+                    resultIntent.putExtra("longitude", String.valueOf(longitude));
+                    resultIntent.putExtra("descricao", descricao);
+                    resultIntent.putExtra("telefone", telefone);
+                    resultIntent.putExtra("imagemUri", imagemUri);
+                    resultIntent.putExtra("ods", finalOds);  // Passando ods como int
+                    setResult(RESULT_OK, resultIntent);
                     finish();
                 } else {
                     try {

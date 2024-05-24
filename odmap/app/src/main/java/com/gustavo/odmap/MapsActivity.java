@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,12 +35,18 @@ import com.squareup.picasso.Target;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static final int CADASTRO_ONG_REQUEST_CODE = 1;
     private List<Ong> ongsList = new ArrayList<>();
     private Spinner spinnerODSFilter;
+    private String currentLink; // Variable to store the current link
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +108,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String descricao = data.getStringExtra("descricao");
             String telefone = data.getStringExtra("telefone");
             String imagemUri = data.getStringExtra("imagemUri");
-            String ods = data.getStringExtra("ods");
+            int ods = data.getIntExtra("ods", 0);
+
+            // Log para depuração
+            Log.d("MapsActivity", "Adicionando marcador: " + nome + " Lat: " + latitude + " Lon: " + longitude + " ODS: " + ods);
 
             // Adiciona um marcador com as coordenadas indicadas
             LatLng location = new LatLng(latitude, longitude);
@@ -111,7 +121,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10));
 
             try {
-                ongsList.add(new Ong(latitude, longitude, nome, link, telefone, descricao, ods, imagemUri));
+                List<Integer> odsList = new ArrayList<>();
+                odsList.add(ods); // Adiciona o ODS na lista
+                ongsList.add(new Ong(latitude, longitude, nome, link, telefone, descricao, odsList, imagemUri));
             } catch (IllegalArgumentException e) {
                 Log.e("MapsActivity", "Erro ao criar objeto Ong: " + e.getMessage());
                 // Trate a exceção aqui, se necessário
@@ -122,6 +134,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        // Log para verificar inicialização do mapa
+        Log.d("MapsActivity", "Mapa está pronto");
+
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
@@ -147,6 +163,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String link = parts[2].substring(6);
                 String phone = parts[3].substring(10);
 
+                // Armazenar o link atual
+                currentLink = link;
+
                 // Definir as informações nos elementos do layout
                 textViewTitle.setText(title);
                 textViewDescription.setText(description);
@@ -156,6 +175,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Exemplo de carregamento de imagem, se você tiver a URI da imagem
                 String imageUri = parts[0].substring(8);  // Ajuste o índice aqui para pegar a URI corretamente
                 if (!imageUri.isEmpty()) {
+                    imageView.setVisibility(View.VISIBLE);
                     Picasso.get().load(imageUri).into(imageView);
                 } else {
                     imageView.setVisibility(View.GONE); // Esconde a ImageView se não houver imagem
@@ -166,15 +186,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         });
 
-        updateMapWithFilter(0);
+        // Listener para cliques no InfoWindow do marcador
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                if (currentLink != null && !currentLink.isEmpty()) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentLink));
+                    startActivity(browserIntent);
+                }
+            }
+        });
+
+        // Chamar o método para carregar os dados das ONGs do servidor
+        loadOngsFromServer();
     }
 
-    public void addMarker(LatLng location, String nome, String link, String imagemUri, String descricao, String telefone, String ods) {
+    public void addMarker(LatLng location, String nome, String link, String imagemUri, String descricao, String telefone, int ods) {
         MarkerOptions markerOptions = new MarkerOptions()
                 .position(location)
                 .title(nome)
                 .snippet("Imagem: " + (imagemUri != null ? imagemUri : "") + "\nDescrição: " + descricao + "\nLink: " + link + "\nTelefone: " + telefone + "\nODS: " + ods)
                 .icon(BitmapDescriptorFactory.defaultMarker(getHueForODS(ods)));
+
+        // Log para depuração
+        Log.d("MapsActivity", "Adicionando marcador com imagem URI: " + imagemUri);
 
         // Define a imagem personalizada do marcador, se imagemUri não for nula
         if (imagemUri != null && !imagemUri.isEmpty()) {
@@ -188,6 +223,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 @Override
                 public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+                    // Log para depuração
+                    Log.e("MapsActivity", "Falha ao carregar a imagem: " + e.getMessage());
                     // Trate a falha ao carregar a imagem aqui, se necessário
                     mMap.addMarker(markerOptions); // Adicione o marcador mesmo se a imagem falhar ao carregar
                 }
@@ -206,9 +243,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.clear();
 
         for (Ong ong : ongsList) {
-            if (filter == 0 || ong.getOds().equals(String.valueOf(filter))) {
+            if (filter == 0 || ong.getOds().contains(filter)) {
                 LatLng location = new LatLng(ong.getLatitude(), ong.getLongitude());
-                addMarker(location, ong.getNome(), ong.getLink(), ong.getImagemUri(), ong.getDescricao(), ong.getTelefone(), ong.getOds());
+                addMarker(location, ong.getNome(), ong.getLink(), ong.getImagemUri(), ong.getDescricao(), ong.getTelefone(), filter);
             }
         }
 
@@ -234,44 +271,78 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         dialog.show();
     }
 
-    private float getHueForODS(String ods) {
+    private float getHueForODS(int ods) {
         switch (ods) {
-            case "ODS 1":
+            case 1:
                 return 0; // Vermelho
-            case "ODS 2":
+            case 2:
                 return 30; // Laranja
-            case "ODS 3":
+            case 3:
                 return 60; // Amarelo
-            case "ODS 4":
+            case 4:
                 return 90; // Verde claro
-            case "ODS 5":
+            case 5:
                 return 120; // Verde
-            case "ODS 6":
+            case 6:
                 return 150; // Verde escuro
-            case "ODS 7":
+            case 7:
                 return 180; // Ciano
-            case "ODS 8":
+            case 8:
                 return 210; // Azul claro
-            case "ODS 9":
+            case 9:
                 return 240; // Azul
-            case "ODS 10":
+            case 10:
                 return 270; // Roxo claro
-            case "ODS 11":
+            case 11:
                 return 300; // Roxo
-            case "ODS 12":
+            case 12:
                 return 330; // Rosa claro
-            case "ODS 13":
-                return 360; // Vermelho (ou 0)
-            case "ODS 14":
+            case 13:
+                return 0; // Vermelho (ajustado de 360 para 0)
+            case 14:
                 return 30; // Laranja (repetido, mas pode ser uma cor diferente)
-            case "ODS 15":
+            case 15:
                 return 60; // Amarelo (repetido, mas pode ser uma cor diferente)
-            case "ODS 16":
+            case 16:
                 return 90; // Verde claro (repetido, mas pode ser uma cor diferente)
-            case "ODS 17":
+            case 17:
                 return 120; // Verde (repetido, mas pode ser uma cor diferente)
             default:
                 return BitmapDescriptorFactory.HUE_BLUE; // Azul padrão
         }
+    }
+
+    private void loadOngsFromServer() {
+        ApiService apiService = RetrofitClient.getApiService();
+        Call<List<Ong>> call = apiService.getOngs();
+        call.enqueue(new Callback<List<Ong>>() {
+            @Override
+            public void onResponse(Call<List<Ong>> call, Response<List<Ong>> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        List<Ong> ongs = response.body();
+                        Log.d("MapsActivity", "ONGs recebidas: " + ongs.toString());
+                        ongsList = ongs;
+                        for (Ong ong : ongsList) {
+                            LatLng location = new LatLng(ong.getLatitude(), ong.getLongitude());
+                            // Usando apenas o primeiro ODS para a cor do marcador
+                            int primaryOds = ong.getOds().isEmpty() ? 0 : ong.getOds().get(0);
+                            addMarker(location, ong.getNome(), ong.getLink(), ong.getImagemUri(), ong.getDescricao(), ong.getTelefone(), primaryOds);
+                        }
+                    } catch (Exception e) {
+                        Log.e("MapsActivity", "Erro ao processar a resposta das ONGs", e);
+                    }
+                } else {
+                    Log.e("MapsActivity", "Erro ao carregar ONGs: " + response.message());
+                    Toast.makeText(MapsActivity.this, "Erro ao carregar ONGs", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Ong>> call, Throwable t) {
+                Log.e("MapsActivity", "Erro de rede ao carregar ONGs", t);
+                Toast.makeText(MapsActivity.this, "Erro de rede. Tente novamente.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
