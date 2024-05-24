@@ -30,9 +30,9 @@
 |-->app<br>
   &emsp;|-->src<br>
   &emsp; &emsp;|-->main<br>
-  &emsp; &emsp;&emsp;|-->java/com/example/odmap
+  &emsp; &emsp;&emsp;|-->java/com/example/odmap<br>
   &emsp; &emsp;&emsp;|-->res<br>
-  &emsp; &emsp;&emsp;|-->test/java/com/gustavo/odmap
+  &emsp; &emsp;&emsp;|-->test/java/com/gustavo/odmap<br>
 |Odapp.apk<br>
 |README.md<br>
 
