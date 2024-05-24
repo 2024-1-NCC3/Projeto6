@@ -1,0 +1,1 @@
+ODAPP localiza ONGs próximas em um mapa interativo, com detalhes de contato e endereços.

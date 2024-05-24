@@ -1,0 +1,13 @@
+ODAPP é um aplicativo que localiza ONGs próximas de você através de um mapa interativo. 
+Encontre ONGs disponíveis, veja detalhes como endereço e 
+contato, e contribua para causas importantes facilmente. Longo: ODAPP é uma solução 
+inovadora que simplifica a busca por ONGs próximas, oferecendo um 
+mapa interativo como guia. Com esta plataforma, é fácil encontrar e se conectar com 
+organizações dedicadas a causas importantes. Através do mapa interativo, os usuários podem explorar facilmente as 
+ONGs disponíveis em suas áreas locais. Cada ONG listada no aplicativo inclui detalhes essenciais, como endereço, informações
+ de contato e uma descrição detalhada de suas atividades e necessidades atuais. Além disso, o ODAPP oferece recursos avançados 
+de filtragem, permitindo que os usuários refinem sua pesquisa com base em critérios específicos, como tipo de causa apoiada, proximidade geográfica ou 
+tipos de voluntariado necessários. O aplicativo também promove a interação entre voluntários e ONGs, incentivando o engajamento comunitário e facilitando 
+o processo de colaboração. Com ODAPP, fazer a diferença em sua comunidade nunca foi tão acessível e gratificante. Junte-se a nós nesta missão de impacto social
+ e descubra como você pode contribuir para um mundo melhor, fortalecendo a rede de apoio em sua própria comunidade. Com ODAPP, a solidariedade está ao alcance
+ de suas mãos.
