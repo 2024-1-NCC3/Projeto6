@@ -20,7 +20,7 @@
 </html>
 
 <p align="center">
-<img src="file:///C:/Users/Henry/Desktop/logo/logo.html" border="0">
+<img src="Documentos/logo_odapp.pdf" border="0">
   
 
 
