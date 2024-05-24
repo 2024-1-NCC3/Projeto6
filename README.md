@@ -50,7 +50,7 @@ Busque pelo apk "odapp.apk" e instale no seu dispositivo Android.
   * ALTERAÇÃO: Integração com o banco de dados
 * 0.2.0 - 17/04/2024
     * ALTERAÇÃO: Reestruturação do repositório
-* 0.1.0 - 20/0232024
+* 0.1.0 - 20/02/2024
     *ALTERAÇÃO: Inclusão das primeiras telas do aplicativo
 * 0.0.1 - 04/02/2024
     *Lançamento inicial do repositório
