@@ -16,20 +16,14 @@
 
 <p>Nosso projeto ajuda ONGs a divulgar suas missões e a conquistar mais visibilidade e apoio globalmente.</p>
 
-<p class="center"><strong>Nós somos a ODAPP!</strong></p>
-
 </body>
 </html>
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
-</p>
+<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" border="0">
+  
 
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
-<br><br>
-Meu projeto ajuda estudantes FECAP a configurarem seus githubs.
-<br><br>
-May the force be with you!
+<p class="center"><strong>Nós somos a ODAPP!</strong></p>
+
 <br><br>
