@@ -8,7 +8,7 @@
 
 ## Nome do grupo: Contempocrânios
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Davih Matheus Benniceo Paes de Barros</a>, <a href="https://www.linkedin.com/in/victorbarq/">Flavio Henrique Oliveira da Silva</a>, <a href="https://www.linkedin.com/in/victorbarq/">Gustavo Marcello Correa de Araujo</a>, <a href="https://www.linkedin.com/in/victorbarq/">Vitor Utimura Locateli</a>
+## Integrantes: <a href="https://www.linkedin.com/in/davih-paes-de-barros/">Davih Matheus Benniceo Paes de Barros</a>, <a href="(https://www.linkedin.com/in/flavio-henrique-oliveira-090985235/)">Flavio Henrique Oliveira da Silva</a>, <a href="https://www.linkedin.com/in/gustavomarcello/">Gustavo Marcello Correa de Araujo</a>, <a href="(https://www.linkedin.com/in/vitor-utimura-locateli-3b8647292/)">Vitor Utimura Locateli</a>
 ## Professores Orientadores:<a href="https://www.linkedin.com/in/katia-bossi/">Katia Bossi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>, <a href="https://www.linkedin.com/in/vheltai/">Vinicius Heltai</a>
 
 
@@ -18,8 +18,6 @@
 <p>Nosso projeto ajuda ONGs a divulgar suas missões e a conquistar mais visibilidade e apoio globalmente.</p>
 
 <p class="center"><strong>Nós somos a ODAPP!</strong></p>
-
-<br><br>
 
 ## 🛠 Instalação
 
