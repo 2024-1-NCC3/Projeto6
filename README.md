@@ -12,36 +12,9 @@
 ## Professores Orientadores: Cristina Machado Correa Leite</a>, Victor Bruno Alexander Rosetti de Quiroz</a>, Vinicius Heltai Pacheco</a>, Katia Milani Lara Bossi</a>
 
 ## Descrição
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto ODAPP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        .page-break {
-            page-break-after: always;
-        }
-        .center {
-            text-align: center;
-            margin-top: 50px;
-        }
-    </style>
-</head>
-<body>
-
 <p>Este projeto é dedicado a auxiliar ONGs de todo o mundo a disponibilizarem suas lutas e ganharem reconhecimento. Fornecemos uma plataforma onde as ONGs podem compartilhar suas causas, alcançar um público mais amplo e obter o apoio necessário para continuar seu trabalho vital.</p>
 
-<div class="page-break"></div>
-
 <p>Nosso projeto ajuda ONGs a divulgar suas missões e a conquistar mais visibilidade e apoio globalmente.</p>
-
-<div class="page-break"></div>
 
 <p class="center"><strong>Nós somos a ODAPP!</strong></p>
 
